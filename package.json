@@ -1,0 +1,20 @@
+{
+  "name": "react-router-generator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/kresli/react-router-generator.git",
+  "author": "Eduard Jacko <jacko.eduard@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mock-fs": "^5.1.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "jest": "^27.3.1",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.4.4"
+  }
+}
