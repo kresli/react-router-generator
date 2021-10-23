@@ -1,0 +1,4 @@
+{
+  "jest.jestCommandLine": "yarn test",
+  "editor.tabSize": 2
+}
