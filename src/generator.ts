@@ -2,8 +2,6 @@ import { buildRoute } from "./buildRoute";
 import { buildRouter } from "./buildRouter";
 import { getPaths, watch } from "./watch";
 import { writeFile } from "./writeFile";
-import * as fs from "fs";
-import * as path from "path";
 // @ts-ignore
 import defaultTemplate from "./router.template.txt";
 export interface GeneratorConfig {
