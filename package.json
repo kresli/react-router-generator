@@ -1,34 +1,26 @@
 {
   "name": "react-router-generator",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./dist/index.cjs",
   "repository": "https://github.com/kresli/react-router-generator.git",
   "author": "Eduard Jacko <jacko.eduard@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "esbuild": "^0.13.9",
-    "exit": "^0.1.2",
-    "glob": "^7.2.0",
-    "glob-promise": "^4.2.1",
-    "jest-message-util": "^27.3.1",
-    "jest-raw-loader": "^1.0.1",
-    "lstat": "^1.0.0",
-    "mock-fs": "^5.1.1",
-    "prettier": "^2.4.1",
-    "terminal-link": "^3.0.0",
-    "wait-for-expect": "^3.0.2",
-    "watchr": "^6.11.0",
-    "yargs": "^17.2.1"
-  },
+  "dependencies": {},
   "scripts": {
     "test": "jest",
     "build": "esbuild src/generator.cli.ts --platform=node --bundle --outfile=dist/generator.cli.js"
   },
   "devDependencies": {
+    "glob": "^7.2.0",
+    "jest-raw-loader": "^1.0.1",
+    "mock-fs": "^5.1.1",
+    "wait-for-expect": "^3.0.2",
+    "yargs": "^17.2.1",
     "@types/jest": "^27.0.2",
     "@types/mock-fs": "^4.13.1",
+    "esbuild": "^0.13.9",
     "jest": "^27.3.1",
-    "ts-jest": "^27.0.7",
+    "prettier": "^2.4.1",
     "typescript": "^4.4.4"
   }
 }
