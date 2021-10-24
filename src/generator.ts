@@ -20,7 +20,9 @@ function writeRouterFile(paths: string[], routerPath: string) {
 
 export function generator({ pagesPath, watch: isWatch }: GeneratorConfig) {
   const globPattern = `${pagesPath}/**/index.tsx`;
+  console.log("pattern: ", globPattern);
   const routerPath = `${pagesPath}/CustomRouter.tsx`;
+  console.log("router path: ", routerPath);
   if (!isWatch) return writeRouterFile(getPaths(globPattern), routerPath);
   return watch(globPattern, (paths) => writeRouterFile(paths, routerPath));
 }

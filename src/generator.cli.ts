@@ -1,9 +1,8 @@
-#!/usr/bin/env node
-import yargs from "yargs/yargs";
-import { hideBin } from "yargs/helpers";
+const yargs = require("yargs");
+// import { hideBin } from "yargs/helpers";
 import { generator, GeneratorConfig } from "./generator";
 
-const argv = yargs(hideBin(process.argv)).options({
+const argv = yargs(process.argv.slice(2)).options({
   pagesPath: { type: "string", required: true },
   watch: { type: "boolean", default: false },
 }).argv;
