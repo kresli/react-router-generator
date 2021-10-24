@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./dist/index.cjs",
   "bin": {
-    "say-hello": "./bin/sayHello.js"
+    "generate-router": "./bin/cli.js"
   },
   "repository": "https://github.com/kresli/react-router-generator.git",
   "author": "Eduard Jacko <jacko.eduard@gmail.com>",
@@ -11,7 +11,7 @@
   "dependencies": {},
   "scripts": {
     "test": "jest",
-    "build": "esbuild src/generator.cli.ts --platform=node --bundle --outfile=dist/generator.cli.js"
+    "build": "rm -rf bin && rm -rf dist && esbuild src/generator.cli.ts --platform=node --bundle --outfile=dist/generator.cli.js"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
