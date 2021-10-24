@@ -2,4 +2,7 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
+  transform: {
+    "\\.txt$": "jest-raw-loader",
+  }
 };

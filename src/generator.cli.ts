@@ -1,10 +1,21 @@
 const yargs = require("yargs");
-// import { hideBin } from "yargs/helpers";
+import { Argv } from "yargs";
 import { generator, GeneratorConfig } from "./generator";
 
-const argv = yargs(process.argv.slice(2)).options({
-  pagesPath: { type: "string", required: true },
+const { argv } = (yargs(process.argv.slice(2)) as Argv).options({
+  /**
+   * src/pages
+   */
+  routeBaseUrl: { type: "string", required: true },
+  /**
+   * route.tsx
+   *  */
+  routeName: { type: "string", required: true },
+  /**
+   * src/CustomRouter.tsx
+   */
+  routerPath: { type: "string", require: true },
   watch: { type: "boolean", default: false },
-}).argv;
+});
 
-generator({ pagesPath: argv.pagesPath, watch: argv.watch });
+generator(argv);

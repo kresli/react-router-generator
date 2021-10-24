@@ -1,2 +1,11 @@
-__IMPORTS__
-__ROUTES__
+import {Switch, Route} from "react-router-dom";
+<<IMPORTS>>
+
+export default function() {
+  return (
+    <Switch>
+<<ROUTES>>
+    </Switch>
+  ) 
+}
+

@@ -2,27 +2,47 @@ import { buildRoute } from "./buildRoute";
 import { buildRouter } from "./buildRouter";
 import { getPaths, watch } from "./watch";
 import { writeFile } from "./writeFile";
+import * as fs from "fs";
+import * as path from "path";
+// @ts-ignore
+import defaultTemplate from "./router.template.txt";
 export interface GeneratorConfig {
-  pagesPath: string;
-  watch: boolean;
+  routeBaseUrl: string;
+  routeName: string;
+  routerPath: string;
+  routerTemplate?: string;
+  watch?: boolean;
 }
 
-function writeRouterFile(paths: string[], routerPath: string) {
-  const routes = paths.map((path, index) =>
-    buildRoute({ path, routerPath, id: index })
+function writeRouterFile(
+  paths: string[],
+  routerPath: string,
+  routeBaseUrl: string,
+  template: string
+) {
+  const routes = paths.map((path, id) =>
+    buildRoute({ path, routerPath, id, routeBaseUrl })
   );
   const router = buildRouter({
     routes,
-    template: "<<IMPORTS>>\n<<ROUTES>>",
+    template: template || defaultTemplate,
   });
   writeFile(routerPath, router);
 }
 
-export function generator({ pagesPath, watch: isWatch }: GeneratorConfig) {
-  const globPattern = `${pagesPath}/**/index.tsx`;
-  console.log("pattern: ", globPattern);
-  const routerPath = `${pagesPath}/CustomRouter.tsx`;
-  console.log("router path: ", routerPath);
-  if (!isWatch) return writeRouterFile(getPaths(globPattern), routerPath);
-  return watch(globPattern, (paths) => writeRouterFile(paths, routerPath));
+export function generator({
+  routeBaseUrl,
+  routeName,
+  routerPath,
+  routerTemplate = defaultTemplate,
+  watch: isWatch = false,
+}: GeneratorConfig) {
+  const globPattern = `${routeBaseUrl}/**/${routeName}`;
+  if (!isWatch) {
+    const paths = getPaths(globPattern);
+    return writeRouterFile(paths, routerPath, routeBaseUrl, routerTemplate);
+  }
+  return watch(globPattern, (paths) =>
+    writeRouterFile(paths, routerPath, routeBaseUrl, routerTemplate)
+  );
 }
